@@ -1,0 +1,40 @@
+# Projet Flask – Simulation d'économie d'entreprise
+
+## Description
+Ce projet est une application Flask qui simule l'économie d'une entreprise sur un an, avec suivi des revenus et dépenses mensuelles. Les calculs utilisent la méthode de Runge-Kutta et les résultats sont affichés avec Chart.js.
+
+## Fonctionnalités
+- Calcul automatique de l'évolution du capital de l'entreprise
+- Visualisation des résultats avec des graphiques interactifs
+- Interface simple avec Flask + HTML/CSS/JS
+- Configuration via fichier `.env`
+
+## Installation
+
+1. Cloner le projet
+```bash
+git clone git@github.com:TonPseudo/mon-projet.git
+cd mon-projet 
+```
+2. Créer un environnement virtuel
+```bash
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Linux/macOS
+source venv/bin/activate
+```
+3. Installer les dépendances
+```bash
+pip install -r requirements.txt
+```
+4. Créer un fichier .env à partir de .env.example et remplir les variables nécessaires
+```bash
+cp .env.example .env  # Linux/macOS
+copy .env.example .env # Windows
+```
+5. Exécution
+```bash
+flask run
+Puis ouvrir le navigateur à http://127.0.0.1:5000
+```
