@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design.css') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="menu_toggle">
+    <div class="overlay">
+        <label for="menu_toggle"></label>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_container">
+            <div class="sidebar-brand">
+                <h2>
+                    <span class="lab la-staylinked"></span>
+                    ECO
+                </h2>
+            </div>
+            <div class="sidebar-avartar">
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div class="avartar-info">
+                    <div class="profil_text">
+                        <h4>{{username}}</h4>
+                    </div>
+                    <span class="las la-angle-double-down"></span>
+                </div>
+
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="/navigationDashboard" class="active">
+                            <span class="las la-adjust"></span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/navigationDonnees" >
+                            <span class="las la-video"></span>
+                            <span>Depenses</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+        <div class="container_header">
+            <div>
+                <label for="menu_toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="logo_container">
+                <img src="" alt="">
+                MON SITE
+            </div>
+            <div class="container_searbar">
+                <div class="searchbar_container">
+                    <form action="">
+                        <input class="searchbar" placeholder="Search" type="text" name="" id="">
+                        <i class="bx bx-search" style="color:#8d8d8d;"></i>
+                    </form>
+                </div>
+            </div>
+            <div class="profil_container">
+                <div class="circle">
+                    <img src="" alt="">
+                </div>
+                    <p>{{username}}</p>
+                    <ul>
+                        <li><a href="/Deconnexion">Deconnexion</a></li>
+                    </ul>  
+                </div>
+            </div>
+        </header>
+        <main>
+            <section>
+                <h3 class="section-head">Overview</h3>
+                <div class="analytics">
+                    <div class="analytic">
+                        <div class="analytic-icon">
+                            <span class="las la-eye"></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4>Capital initial</h4>
+                            <h1>{{capitalInitial}}</h1>
+                        </div>
+                    </div>
+                    <div class="analytic">
+                        <div class="analytic-icon">
+                            <span class="las la-clock"></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4>Capital final</h4>
+                            <h1>{{capitalFinal}}</h1>
+                        </div>
+                    </div>
+                    <div class="analytic">
+                        <div class="analytic-icon">
+                            <span class="las la-users"></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4>Capital max</h4>
+                            <h1>{{capitalMax}} </h1>
+                        </div>
+                    </div>
+                    <div class="analytic">
+                        <div class="analytic-icon">
+                            <span class="las la-heart"></span>
+                        </div>
+                        <div class="analytic-info">
+                            <h4>Capital min</h4>
+                            <h1>{{capitalMin}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="block-grid">
+                    <div class="revenue-card">
+                        <h3 class="section-head">Total Revenu</h3>
+                        <div class="rev-content">
+                            <img src="" alt="">
+                            <div class="rev-info">
+                                <h3>Ralph Anderson</h3>
+                                <h1>3.5M<small>Subscribers</small></h1>
+                            </div>
+                            <div class="rev-sum">
+                                <h4>Total income</h4>
+                                <h2>Ar {{Benefice}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graph-card">
+                        <h3 class="section-head">Graph</h3>
+                        <div class="graph-content">
+                            <div class="graph-head">
+                                <div class="icons-wrapper">
+                                    <div class="icon">
+                                        <span class="las la-eye text-main"></span>
+                                    </div>
+                                    <div class="icon">
+                                        <span class="las la-clock text-success"></span>
+                                    </div>
+                                </div>
+                                <div class="graph-select">
+                                    <select name="" id="">
+                                        <option value="">September</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="graph-board">
+                                <canvas id="myChart" width="100%" height="60px">
+
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/chart.umd.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

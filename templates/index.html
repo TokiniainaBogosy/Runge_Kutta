@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if donneesRevenu is not none and donneesDepenses is not none %}
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Mois</th>
+                <th>Taux de revenu</th>
+                <th>Coefficient de depense</th>  
+                <th>depense fixe</th>    
+            </tr>
+            {% for revenu,depense in data %}
+            <tr>
+                <td>{{revenu[0]}}</td>
+                <td>{{revenu[1]}}</td>
+                <td>{{revenu[2]}}</td>
+                <td>{{depense[2]}}</td>
+                <td>{{depense[3]}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+    {% endif %}
+    <form action="/navigation" method="get">
+        <input type="submit" value="AFFICHER" name="boutton">
+        <input type="submit" value="AJOUTER" name="boutton">
+    </form>
+    
+    <canvas id="myChart" width="400" height="200">
+
+    </canvas>
+    <script src="{{ url_for('static', filename='js/chart.umd.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

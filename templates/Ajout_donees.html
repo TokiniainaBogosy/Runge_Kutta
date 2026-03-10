@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design.css') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="menu_toggle">
+    <div class="overlay">
+        <label for="menu_toggle"></label>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_container">
+            <div class="sidebar-brand">
+                <h2>
+                    <span class="lab la-staylinked"></span>
+                    ECO
+                </h2>
+            </div>
+            <div class="sidebar-avartar">
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div class="avartar-info">
+                    <div class="profil_text">
+                        <h4>{{username}}</h4>
+                    </div>
+                    <span class="las la-angle-double-down"></span>
+                </div>
+
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="/navigationDashboard" >
+                            <span class="las la-adjust"></span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/navigationDonnees" class="active">
+                            <span class="las la-video"></span>
+                            <span>Depenses</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+        <div class="container_header">
+            <div>
+                <label for="menu_toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="logo_container">
+                <img src="" alt="">
+                MON SITE
+            </div>
+            <div class="container_searbar">
+                <div class="searchbar_container">
+                    <form action="">
+                        <input class="searchbar" placeholder="Search" type="text" name="" id="">
+                        <i class="bx bx-search" style="color:#8d8d8d;"></i>
+                    </form>
+                </div>
+            </div>
+            <div class="profil_container">
+                <div class="circle">
+                    <img src="" alt="">
+                </div>
+                    <p>{{username}}</p>
+                    <ul>
+                        <li><a href="/Deconnexion">Deconnexion</a></li>
+                    </ul>   
+                </div>
+            </div>
+        </header>
+        <main>
+            <section>
+                 <div class="analytic">
+                    <div class="analytic-info">
+                        <h4>Formule</h4>
+                        <h1>
+                            <p>
+                                \[
+                                \frac{dC}{dt} = aC - b\sqrt{C} - d
+                                \]
+                            </p>
+                        </h1>
+                    </div>
+                </div>
+                <div class="analytic">
+                    <div class="analytic-info">
+                        <h4>Capital de depart</h4>
+                        <form action="/ajoutCapitalInitial" method="post">
+                            <input type="text" name="capitalInitial" id="">
+                            <input type="submit" value="Ajouter">
+                        </form>
+                    </div>
+                </div>
+                <div class="report-container">
+                    <div class="report-header">
+                        <h1 class="recent-Articles">Donnees</h1>
+                    </div>
+
+                    <div class="report-body">
+                        <div class="report-topic-heading">
+                            <h3 class="t-op">Mois</h3>
+                            <h3 class="t-op">Taux de revenu (a)</h3>
+                            <h3 class="t-op">Coefficient de depenses (b) </h3>
+                            <h3 class="t-op">Depesnse fixe (d)</h3>
+                        </div>
+                        <div class="items">
+                            {% if donneesRevenu is not none and donneesDepenses is not none %}
+                                {% for revenu,depense in data %}
+                                <div class="item1">
+                                    <h3 class="t-op-nextlvl">{{revenu[1]}}</h3>
+                                    <h3 class="t-op-nextlvl">{{revenu[2]}}</h3>
+                                    <h3 class="t-op-nextlvl">{{depense[2]}}</h3>
+                                    <h3 class="t-op-nextlvl">{{depense[3]}}</h3>
+                                </div>
+                                {%endfor%}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <h3 class="section-head">Modifier les donnees</h3>
+                <table border="1">
+                    <tr>
+                        <th>Mois</th>
+                        <th>Taux revenu</th>
+                        <th>Coefficient depense</th>
+                        <th>Depense fixe</th>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Janvier <input type="hidden" value="1" name="mois"> </td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Fevrier <input type="hidden" value="2" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Mars <input type="hidden" value="3" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Avril <input type="hidden" value="4" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Mai <input type="hidden" value="5" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Juin <input type="hidden" value="6" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Juillet <input type="hidden" value="7" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Aout <input type="hidden" value="8" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Septembre <input type="hidden" value="9" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Octobre <input type="hidden" value="10" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Novembre <input type="hidden" value="11" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form action="/modificatonDonnee" method="post">
+                            <td>Decembre <input type="hidden" value="12" name="mois"></td>
+                            <td><input type="text" name="tauxRevenu" id=""></td>
+                            <td><input type="text" name="coefficientDepense" id=""></td>
+                            <td><input type="text" name="depenseFixe" id=""></td>
+                            <td><input type="submit" value="Modifier"></td>
+                        </form>
+                    </tr>    
+                 </table>
+                <form action="/reinitialisation" method="post">
+                    <input type="submit" value="REINITIALISER">
+                </form>
+                <form hidden action="/ajout" method="post">
+                    <select name="mois" id="">
+                        <option value="1">Janvier</option>
+                        <option value="2">Fervier</option>
+                        <option value="3">Mars</option>
+                        <option value="4">Avril</option>
+                        <option value="5">Mai</option>
+                        <option value="6">Juin</option>
+                        <option value="7">Juillet</option>
+                        <option value="8">Aout</option>
+                        <option value="9">Septembre</option>
+                        <option value="10">Octobre</option>
+                        <option value="11">Noovembre</option>
+                        <option value="12">Decembre</option>
+                    </select>
+                    <input type="text" name="tauxRevenu" id="">
+                    <input type="text" name="coefficientDepense" id="">
+                    <input type="text" name="depenseFixe" id="">
+                    <input type="submit" value="AJOUTER">
+                </form>
+            </section>
+        </main>
+    </div>
+    
+</body>
+</html>
