@@ -92,7 +92,7 @@ def creerCompte():
             return "ERROR this user already exist"
         createUser(username,email,password)
         return redirect(url_for("creerCompte"))
-    return render_template("Connexion.html")
+    return render_template("connexion.html")
 
 @app.route("/Connexion",methods=["POST","GET"])
 def seConnecter():
@@ -104,7 +104,7 @@ def seConnecter():
             return redirect(url_for("afficher"))
         else:
             return redirect(url_for("seConnecter"))
-    return render_template("Connexion.html")
+    return render_template("connexion.html")
 
 @app.route("/Deconnexion",methods=["POST","GET"])
 def seDeconnecter():
