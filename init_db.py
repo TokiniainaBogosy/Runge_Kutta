@@ -10,7 +10,7 @@ def init_db():
         username TEXT NOT NULL,
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
-        capital_initial REAL NOT NULL
+        capital_initial REAL 
     )
     """)
     c.execute("""
