@@ -3,6 +3,8 @@ def runge_kutta(f, t0, C0, h, n):
     resultats = []
     t = t0
     C = C0
+    if C == None:
+        C = 0
     for _ in range(n):
         k1 = h * f(t, C)
         k2 = h * f(t + h/2, C + k1/2)
