@@ -5,7 +5,8 @@ from flask import session
 def dC_dt(t, C):
     mois = (int(t) % 12) or 12
     a, b, d = get_revenu_depense(mois)
-
+    if C == None:
+        C = 0
     if C <= 0:
         return -d
     return a * C - b * math.sqrt(C) - d
