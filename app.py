@@ -13,7 +13,7 @@ DB_NAME = "database.db"
 def createUser(username,email,password):
     with get_connexion() as conn:
         conn.execute(
-            "INSERT INTO utilisateurs (username,email,password) VALUES (?,?,?)",
+            "INSERT INTO utilisateurs (username,email,password,capital_initial) VALUES (?,?,?,0)",
             (username,email,password)
         )
         initialiseDonnee(email,conn)
@@ -61,6 +61,7 @@ def recalculateCapitalSession():
         cursor = conn.cursor()
         cursor.execute("SELECT capital_initial FROM utilisateurs WHERE email = ?",(session['data'],))
         capitalInitial = cursor.fetchone()[0]
+        print(capitalInitial)
     donnees = runge_kutta(dC_dt, 0, capitalInitial, 1, 12)
     capital = [x[1] for x in donnees]
     session['capital'] = capital
